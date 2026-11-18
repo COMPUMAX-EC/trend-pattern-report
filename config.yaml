@@ -1,0 +1,11 @@
+# Change the queries to your niche. The example niche (cloud and AI tips) is only a starting point.
+queries:
+  - "cloud computing explained #shorts"
+  - "AI tools tips #shorts"
+per_query: 25        # search results to look at per query (relevance order, old ones are dropped)
+top_n: 8             # videos to measure (the best views per day)
+days: 30             # only videos uploaded in the last N days
+max_duration_s: 90   # Shorts length
+whisper_model: tiny  # tiny / base / small (bigger = slower, more accurate)
+use_llm: true        # Claude names hook types and writes rules when credentials exist
+reports_dir: reports

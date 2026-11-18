@@ -1,0 +1,37 @@
+name: Weekly trend report
+
+on:
+  schedule:
+    - cron: "0 13 * * 1"   # Mondays 13:00 UTC (08:00 in Ecuador)
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Videos to measure (empty = top_n from config.yaml)"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest   # YouTube may block GitHub-hosted IPs; see README for a self-hosted runner
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
+      - name: Build this week's report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # optional: without it the Claude step is skipped
+        run: python -m trendpattern run --config config.yaml ${{ inputs.limit && format('--limit {0}', inputs.limit) || '' }}
+      - name: Commit the report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports
+          git diff --cached --quiet || git commit -m "Weekly trend report $(date -u +%G-W%V)"
+          git push
