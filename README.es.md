@@ -36,11 +36,13 @@ La búsqueda de YouTube devuelve resultados por relevancia y muchos son antiguos
 
 Con `ANTHROPIC_API_KEY` definida, el paso 3 también le pide a Claude (`claude-opus-5-5`) que nombre los tipos de gancho y escriba las reglas en palabras, usando solo los números medidos. Sin la clave, o con `--no-llm`, el reporte igual tiene todos los números y la tabla de reglas.
 
-## Ejecución semanal en GitHub Actions
+## Ejecución semanal
 
-`.github/workflows/weekly.yml` corre cada lunes (y cuando quieras desde la pestaña Actions), ejecuta las pruebas, arma el reporte y lo guarda en `reports/`. Agrega `ANTHROPIC_API_KEY` como secreto del repositorio para activar el paso con Claude.
+YouTube bloquea los runners de GitHub ("Sign in to confirm you're not a bot"), así que el reporte semanal de este repositorio corre cada lunes en un runner propio que vive en otro repositorio privado, y guarda el resultado en `reports/`. Mantener ese runner fuera de este repositorio público evita que los pull requests de desconocidos ejecuten código en esa máquina.
 
-YouTube a veces bloquea las descargas desde los runners de GitHub. Si el reporte marca todos los videos como omitidos, ejecútalo en un runner propio (cambia `runs-on: ubuntu-latest` por `runs-on: self-hosted`) o en tu computadora.
+En este repositorio, `.github/workflows/weekly.yml` ejecuta las pruebas en cada push y pull request. Su tarea de reporte se puede lanzar a mano desde la pestaña Actions (con `ANTHROPIC_API_KEY` como secreto para el paso con Claude), pero lo más probable es que YouTube la bloquee ahí.
+
+Para correrlo con tu propio horario usa cron, el Programador de tareas de Windows o un runner propio en un repositorio privado que ejecute `python -m trendpattern run` en una copia de este.
 
 ## Uso responsable
 

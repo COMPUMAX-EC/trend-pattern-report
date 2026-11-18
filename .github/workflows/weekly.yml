@@ -1,8 +1,12 @@
-name: Weekly trend report
+name: Tests and manual report
 
+# The weekly report runs on a self-hosted runner: YouTube answers GitHub-hosted runners with
+# "Sign in to confirm you're not a bot". Here, tests run on every push and pull request, and the
+# report job is kept for manual runs (it works on GitHub-hosted runners only if YouTube allows it).
 on:
-  schedule:
-    - cron: "0 13 * * 1"   # Mondays 13:00 UTC (08:00 in Ecuador)
+  push:
+    branches: [main]
+  pull_request:
   workflow_dispatch:
     inputs:
       limit:
@@ -13,9 +17,8 @@ permissions:
   contents: write
 
 jobs:
-  report:
-    runs-on: ubuntu-latest   # YouTube may block GitHub-hosted IPs; see README for a self-hosted runner
-    timeout-minutes: 60
+  tests:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -24,7 +27,20 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python -m pytest -q
-      - name: Build this week's report
+
+  report:
+    if: github.event_name == 'workflow_dispatch'
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Build the report
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # optional: without it the Claude step is skipped
         run: python -m trendpattern run --config config.yaml ${{ inputs.limit && format('--limit {0}', inputs.limit) || '' }}

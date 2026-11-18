@@ -48,11 +48,13 @@ YouTube search returns results by relevance, and many are old. The tool drops an
 
 With `ANTHROPIC_API_KEY` set, step 3 also asks Claude (`claude-opus-5-5`) to name the hook types and write the rules in plain words, using only the measured numbers. Without a key, or with `--no-llm`, the report still has every number and the rule table.
 
-## Weekly run on GitHub Actions
+## Weekly run
 
-`.github/workflows/weekly.yml` runs every Monday (and on demand from the Actions tab), runs the tests, builds the report and commits it to `reports/`. Add `ANTHROPIC_API_KEY` as a repository secret to turn on the Claude step.
+YouTube blocks GitHub-hosted runners ("Sign in to confirm you're not a bot"), so the weekly report for this repo runs every Monday on a self-hosted runner kept in a separate private repository, and commits the result to `reports/`. Keeping that runner out of this public repo means pull requests from strangers can never run code on that machine.
 
-YouTube sometimes blocks downloads from GitHub-hosted runners. If the run reports every video as skipped, run it on a self-hosted runner (change `runs-on: ubuntu-latest` to `runs-on: self-hosted`), or run it locally.
+In this repo, `.github/workflows/weekly.yml` runs the tests on every push and pull request. Its report job can still be started by hand from the Actions tab (with `ANTHROPIC_API_KEY` as a repository secret for the Claude step), but expect YouTube to block it there.
+
+To run it on your own schedule, use cron, Windows Task Scheduler, or a self-hosted runner in a private repo that runs `python -m trendpattern run` in a checkout of this one.
 
 ## Responsible use
 
