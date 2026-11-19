@@ -1,12 +1,12 @@
 {
   "week": "2026-W47",
   "rules": {
-    "target_duration_s": 30.0,
-    "cut_every_s": 15.02,
-    "first_cut_by_s": 5.5,
+    "target_duration_s": 27.55,
+    "cut_every_s": 20.07,
+    "first_cut_by_s": 6.5,
     "speech_starts_by_s": 0.0,
-    "words_per_minute": 120,
-    "talk_ratio": 0.67,
+    "words_per_minute": 60.0,
+    "talk_ratio": 0.34,
     "source": "medians of measured videos"
   },
   "editing_rules": []

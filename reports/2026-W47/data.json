@@ -11,15 +11,15 @@
       "webpage_url": "https://www.youtube.com/watch?v=Zh_n90dI0n0",
       "channel": "WELLWATCHTECH",
       "duration": 30,
-      "view_count": 9,
+      "view_count": 10,
       "like_count": 5,
       "comment_count": null,
       "upload_date": "20261118",
       "timestamp": 1795003135,
       "tags": [],
       "query": "cloud computing explained #shorts",
-      "age_days": 1.0,
-      "views_per_day": 9,
+      "age_days": 1.4,
+      "views_per_day": 7,
       "metrics": {
         "duration_s": 30.0,
         "n_cuts": 1,
@@ -40,14 +40,14 @@
       "webpage_url": "https://www.youtube.com/watch?v=QYEwPD3Yoqg",
       "channel": "AI Made Easy",
       "duration": 25,
-      "view_count": 5,
+      "view_count": 6,
       "like_count": null,
       "comment_count": null,
       "upload_date": "20261112",
       "timestamp": 1794484589,
       "tags": [],
       "query": "AI tools tips #shorts",
-      "age_days": 6.4,
+      "age_days": 7.4,
       "views_per_day": 1,
       "metrics": {
         "duration_s": 25.1,
@@ -62,94 +62,65 @@
         "hook_text": "",
         "language": "en"
       }
-    },
-    {
-      "id": "UMYS9mNj7Og",
-      "title": "3 AI Tools That Can Save You Hours! 🤖 #Shorts",
-      "webpage_url": "https://www.youtube.com/watch?v=UMYS9mNj7Og",
-      "channel": "TomTech Shorts",
-      "duration": 33,
-      "view_count": 2,
-      "like_count": null,
-      "comment_count": null,
-      "upload_date": "20261106",
-      "timestamp": 1793982380,
-      "tags": [],
-      "query": "AI tools tips #shorts",
-      "age_days": 12.2,
-      "views_per_day": 0,
-      "metrics": {
-        "duration_s": 33.2,
-        "n_cuts": 6,
-        "cuts_per_sec": 0.181,
-        "avg_shot_s": 4.74,
-        "first_cut_s": 4.5,
-        "words": 77,
-        "wpm": 139,
-        "talk_ratio": 0.81,
-        "time_to_first_word_s": 0.0,
-        "hook_text": "When to save hours every week, try these three",
-        "language": "en"
-      }
     }
   ],
   "stats": {
     "duration_s": {
-      "n": 3,
-      "p25": 27.55,
-      "median": 30.0,
-      "p75": 31.6
+      "n": 2,
+      "p25": 26.33,
+      "median": 27.55,
+      "p75": 28.77
     },
     "n_cuts": {
-      "n": 3,
-      "p25": 0.5,
-      "median": 1,
-      "p75": 3.5
+      "n": 2,
+      "p25": 0.25,
+      "median": 0.5,
+      "p75": 0.75
     },
     "cuts_per_sec": {
-      "n": 3,
-      "p25": 0.02,
-      "median": 0.03,
-      "p75": 0.11
+      "n": 2,
+      "p25": 0.01,
+      "median": 0.02,
+      "p75": 0.02
     },
     "avg_shot_s": {
-      "n": 3,
-      "p25": 9.88,
-      "median": 15.02,
-      "p75": 20.07
+      "n": 2,
+      "p25": 17.55,
+      "median": 20.07,
+      "p75": 22.6
     },
     "first_cut_s": {
-      "n": 2,
-      "p25": 5.0,
-      "median": 5.5,
-      "p75": 6.0
+      "n": 1,
+      "p25": 6.5,
+      "median": 6.5,
+      "p75": 6.5
     },
     "wpm": {
-      "n": 3,
-      "p25": 60.0,
-      "median": 120,
-      "p75": 129.5
+      "n": 2,
+      "p25": 30.0,
+      "median": 60.0,
+      "p75": 90.0
     },
     "talk_ratio": {
-      "n": 3,
-      "p25": 0.34,
-      "median": 0.67,
-      "p75": 0.74
+      "n": 2,
+      "p25": 0.17,
+      "median": 0.34,
+      "p75": 0.5
     },
     "time_to_first_word_s": {
-      "n": 2,
+      "n": 1,
       "p25": 0.0,
       "median": 0.0,
       "p75": 0.0
     }
   },
   "rules": {
-    "target_duration_s": 30.0,
-    "cut_every_s": 15.02,
-    "first_cut_by_s": 5.5,
+    "target_duration_s": 27.55,
+    "cut_every_s": 20.07,
+    "first_cut_by_s": 6.5,
     "speech_starts_by_s": 0.0,
-    "words_per_minute": 120,
-    "talk_ratio": 0.67,
+    "words_per_minute": 60.0,
+    "talk_ratio": 0.34,
     "source": "medians of measured videos"
   },
   "insights": null
